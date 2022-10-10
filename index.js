@@ -78,7 +78,7 @@ app.get('/betzona', async (req, res) => {
 });
 
 app.get('/fbref', async (req, res) => {
-  const predicitons = await matchesStatArea()
+  const predicitons = await matchesFbref()
   res.json({ predicitons })
 });
 // Port Number
