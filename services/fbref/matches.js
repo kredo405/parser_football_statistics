@@ -19,29 +19,31 @@ export const matchesFbref = async () => {
     const options = {
         method: 'GET',
         url: `https://widgets.sports-reference.com/wg.fcgi?css=1&site=fb&url=%2Fen%2Fcomps%2F11%2Fschedule%2FSerie-A-Scores-and-Fixtures&div=div_sched_2022-2023_11_1`,
-        headers: {
-            'User-Agent': desktop_agents[rand],
-        }
+        // headers: {
+        //     'User-Agent': desktop_agents[rand],
+        // }
     };
     try {
         const response = await axios.request(options)
         const result = await response.data
         const matches = [];
         const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll(".tbody>tr")
-        arrEl.forEach(el => {
-            matches.push({
-                homeTeam: el.querySelector('[data-stat="home_team"]').querySelector('a').textContent,
-                awayTeam: el.querySelector('[data-stat="away_team"]').querySelector('a').textContent,
-                date: el.querySelector('[data-stat="date"]') ? el.querySelector('[data-stat="date"]').querySelector('a').textContent : null,
-                time: el.querySelector('[data-stat="start_time"]').querySelector('.venuetime') ?
-                    el.querySelector('[data-stat="start_time"]').querySelector('.venuetime').textContent :
-                    el.querySelector('[data-stat="start_time"]').textContent,
-                score: el.querySelector('[data-stat="score"]').querySelector('a') ?
-                    el.querySelector('[data-stat="score"]').querySelector('a').textContent :
-                    el.querySelector('[data-stat="score"]').textContent,
-            });
-        })
+        let arrEl = dom.window.document.querySelectorAll(".tbody>tr");
+        if (el.querySelector('[data-stat="player"]').querySelector('a')) {
+            arrEl.forEach(el => {
+                matches.push({
+                    homeTeam: el.querySelector('[data-stat="home_team"]').querySelector('a').textContent,
+                    awayTeam: el.querySelector('[data-stat="away_team"]').querySelector('a').textContent,
+                    date: el.querySelector('[data-stat="date"]') ? el.querySelector('[data-stat="date"]').querySelector('a').textContent : null,
+                    time: el.querySelector('[data-stat="start_time"]').querySelector('.venuetime') ?
+                        el.querySelector('[data-stat="start_time"]').querySelector('.venuetime').textContent :
+                        el.querySelector('[data-stat="start_time"]').textContent,
+                    score: el.querySelector('[data-stat="score"]').querySelector('a') ?
+                        el.querySelector('[data-stat="score"]').querySelector('a').textContent :
+                        el.querySelector('[data-stat="score"]').textContent,
+                });
+            })
+        }
 
         return matches;
     }
