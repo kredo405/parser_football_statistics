@@ -1,7 +1,8 @@
 import axios from 'axios';
 import jsdom from "jsdom";
 const { JSDOM } = jsdom;
- const moneyWay1x2 = async () => {
+
+const moneyWay1x2 = async () => {
     const desktop_agents = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -17,7 +18,7 @@ const { JSDOM } = jsdom;
 
     const options = {
         method: 'GET',
-        url: `https://footystats.org/clubs/manchester-city-fc-93`,
+        url: `https://kredo405.github.io/fbrefdata/`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
@@ -25,16 +26,17 @@ const { JSDOM } = jsdom;
     try {
         const response = await axios.request(options)
         const result = await response.data
+        console.log(result)
         const matches = [];
         const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll(".h2h-tabbed-contents>tbody")
+        let arrEl = dom.window.document.querySelectorAll("tbody>tr")
         arrEl.forEach(el => {
             matches.push({
-                leagueName: el.querySelectorAll('.row')[0].querySelectorAll('.item')[1].textContent.trim(),
+                leagueName: el.querySelector('[data-stat="venue"]').textContent.trim(),
             });
         })
 
-        console.log(matches) 
+        console.log(matches);
     }
     catch (error) {
         console.log(error);

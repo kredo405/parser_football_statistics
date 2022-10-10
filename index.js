@@ -19,6 +19,7 @@ import { correctScore } from './services/arbworld/correctScore.js';
 import { onlineBookmaker } from './services/prediction/onlineBookmaker.js';
 import { betzona } from './services/prediction/betzona.js';
 import { matchesFbref } from './services/fbref/matches.js';
+import { matchesStatArea } from './services/statarea/statarea.js';
 
 
 // const firebaseConfig = {
@@ -77,7 +78,7 @@ app.get('/betzona', async (req, res) => {
 });
 
 app.get('/fbref', async (req, res) => {
-  const predicitons = await matchesFbref()
+  const predicitons = await matchesStatArea()
   res.json({ predicitons })
 });
 // Port Number

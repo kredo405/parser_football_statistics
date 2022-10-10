@@ -18,7 +18,7 @@ export const matchesFbref = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://widgets.sports-reference.com/wg.fcgi?css=1&site=fb&url=%2Fen%2Fcomps%2F11%2Fschedule%2FSerie-A-Scores-and-Fixtures&div=div_sched_2022-2023_11_1`,
+        url: `https://widgets.sports-reference.com/wg.fcgi?css=1&site=fb&url=%2Fen%2Fcomps%2F13%2FLigue-1-Stats&div=div_results2022-2023131_overall`,
         // headers: {
         //     'User-Agent': desktop_agents[rand],
         // }
@@ -29,21 +29,25 @@ export const matchesFbref = async () => {
         const matches = [];
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".tbody>tr");
-        if (el.querySelector('[data-stat="player"]').querySelector('a')) {
             arrEl.forEach(el => {
                 matches.push({
-                    homeTeam: el.querySelector('[data-stat="home_team"]').querySelector('a').textContent,
-                    awayTeam: el.querySelector('[data-stat="away_team"]').querySelector('a').textContent,
-                    date: el.querySelector('[data-stat="date"]') ? el.querySelector('[data-stat="date"]').querySelector('a').textContent : null,
-                    time: el.querySelector('[data-stat="start_time"]').querySelector('.venuetime') ?
-                        el.querySelector('[data-stat="start_time"]').querySelector('.venuetime').textContent :
-                        el.querySelector('[data-stat="start_time"]').textContent,
-                    score: el.querySelector('[data-stat="score"]').querySelector('a') ?
-                        el.querySelector('[data-stat="score"]').querySelector('a').textContent :
-                        el.querySelector('[data-stat="score"]').textContent,
+                    team: el.querySelector('[data-stat="team"]').querySelector('a').getAttribute('href').slice(37, -6),
+                    rank: el.querySelector('[data-stat="rank"]').textContent,
+                    games: el.querySelector('[data-stat="games"]').textContent,
+                    wins: el.querySelector('[data-stat="wins"]').textContent,
+                    draws: el.querySelector('[data-stat="ties"]').textContent,
+                    losses: el.querySelector('[data-stat="losses"]').textContent,
+                    goals_for: el.querySelector('[data-stat="goals_for"]').textContent,
+                    goals_against: el.querySelector('[data-stat="goals_against"]').textContent,
+                    goal_diff: el.querySelector('[data-stat="goal_diff"]').textContent,
+                    points: el.querySelector('[data-stat="points"]').textContent,
+                    points_avg: el.querySelector('[data-stat="points_avg"]').textContent,
+                    xg_for: el.querySelector('[data-stat="xg_for"]').textContent,
+                    xg_against: el.querySelector('[data-stat="xg_against"]').textContent,
+                    points: el.querySelector('[data-stat="xg_diff"]').textContent,
+                    xg_diff_per90: el.querySelector('[data-stat="xg_diff_per90"]').textContent,
                 });
             })
-        }
 
         return matches;
     }
