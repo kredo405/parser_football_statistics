@@ -33,7 +33,7 @@ export const betzona = async () => {
             links.push(`https://betzona.ru${el.querySelector('.link_flex').getAttribute('href')}`);
         })
 
-        const half = Math.ceil(links.length / 2); 
+        const half = Math.ceil(links.length / 2);
         const firsArr = links.slice(0, half);
         const secondArr = links.slice(-half);
 
@@ -56,23 +56,23 @@ const getData = async (arr) => {
             const dom = new JSDOM(el.data)
             let block = dom.window.document.querySelector(".forecast-description")
             matches.push({
-              homeName: block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_left').querySelector('.formatch_name').querySelector('.name').textContent,
-              awayName: block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_right').querySelector('.formatch_name').querySelector('.name').textContent,
-              homeLogo: `https://betzona.ru${block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_left').querySelector('.formatch_name').querySelector('.img_box').querySelector('.img_team').getAttribute('src')}`,
-              awayLogo: `https://betzona.ru${block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_right').querySelector('.formatch_name').querySelector('.img_box').querySelector('.img_team').getAttribute('src')}`,
-              league: block.querySelector('.head').querySelector('.formatch_data').querySelector('.list_formatch_data').querySelectorAll('li')[0].querySelector('.formatch_data_one').querySelector('.date').textContent,
-              date: block.querySelector('.head').querySelector('.formatch_data').querySelector('.list_formatch_data').querySelectorAll('li')[1].querySelector('.formatch_data_one').querySelector('.date').textContent,
-              homePreview: {
-                info: block.querySelectorAll('.team-info')[0].querySelector('.info').querySelector('p').textContent,
-              },
-              awayPreview: {
-                info: block.querySelectorAll('.team-info')[1].querySelector('.info').querySelector('p').textContent,
-              },
-              forecast: {
-                text: block.querySelector('.forecast-info').querySelector('.bpdr').textContent,
-                bet: block.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.bet_name').textContent,
-                odd: block.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.ratio').textContent,
-              }
+                homeName: block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_left').querySelector('.formatch_name').querySelector('.name').textContent,
+                awayName: block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_right').querySelector('.formatch_name').querySelector('.name').textContent,
+                homeLogo: `https://betzona.ru${block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_left').querySelector('.formatch_name').querySelector('.img_box').querySelector('.img_team').getAttribute('src')}`,
+                awayLogo: `https://betzona.ru${block.querySelector('.head').querySelector('.formatch').querySelector('.formatch_right').querySelector('.formatch_name').querySelector('.img_box').querySelector('.img_team').getAttribute('src')}`,
+                league: block.querySelector('.head').querySelector('.formatch_data').querySelector('.list_formatch_data').querySelectorAll('li')[0].querySelector('.formatch_data_one').querySelector('.date').textContent,
+                date: block.querySelector('.head').querySelector('.formatch_data').querySelector('.list_formatch_data').querySelectorAll('li')[1].querySelector('.formatch_data_one').querySelector('.date').textContent,
+                homePreview: {
+                    info: block.querySelectorAll('.team-info')[0].querySelector('.info').querySelector('p').textContent,
+                },
+                awayPreview: {
+                    info: block.querySelectorAll('.team-info')[1].querySelector('.info').querySelector('p').textContent,
+                },
+                forecast: {
+                    text: block.querySelector('.forecast-info').querySelector('.bpdr').textContent,
+                    bet: block.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.bet_name').textContent,
+                    odd: block.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.ratio').textContent,
+                }
             })
         })
 
@@ -81,4 +81,4 @@ const getData = async (arr) => {
     catch (error) {
         console.log(error);
     }
-  }
+}

@@ -2,7 +2,7 @@ import axios from 'axios';
 import jsdom from "jsdom";
 const { JSDOM } = jsdom;
 
-const moneyWay1x2 = async () => {
+export const h2hSoccer365 = async (href) => {
     const desktop_agents = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -18,29 +18,35 @@ const moneyWay1x2 = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://kredo405.github.io/fbrefdata/`,
+        url: `https://soccer365.ru/${href}/&tab=stats_games`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
     };
+    
     try {
         const response = await axios.request(options)
         const result = await response.data
-        console.log(result)
-        const matches = [];
+        const match = [];
         const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll("tbody>tr")
+        let arrEl = dom.window.document.querySelectorAll(".live_body")
         arrEl.forEach(el => {
-            matches.push({
-                leagueName: el.querySelector('[data-stat="venue"]').textContent.trim(),
+            match.push({
+                matches: el.querySelector('#result_data_h2h').querySelector('.h2h_main_left').querySelector('.games_value').textContent.trim(),
+                homeWin: el.querySelector('#result_data_h2h').querySelector('.h2h_main_right').querySelectorAll('.h2h_stats_item')[0].querySelector('.inf_vleft')
+                    .querySelector('div').querySelector('span').textContent.trim(),
+                awayWin: el.querySelector('#result_data_h2h').querySelector('.h2h_main_right').querySelectorAll('.h2h_stats_item')[0].querySelector('.inf_vright')
+                    .querySelector('div').querySelector('span').textContent.trim(),
+                homeGoalsAvg: el.querySelector('#result_data_h2h').querySelector('.h2h_main_right').querySelectorAll('.h2h_stats_item')[2].querySelector('.inf_vleft')
+                    .querySelector('div').querySelector('span').textContent.trim(),
+                awayGoalsAvg: el.querySelector('#result_data_h2h').querySelector('.h2h_main_right').querySelectorAll('.h2h_stats_item')[2].querySelector('.inf_vright')
+                    .querySelector('div').querySelector('span').textContent.trim(),
             });
         })
 
-        console.log(matches);
+        return match
     }
     catch (error) {
         console.log(error);
     }
 };
-
-moneyWay1x2()

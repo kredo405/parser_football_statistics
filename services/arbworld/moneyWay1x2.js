@@ -18,7 +18,7 @@ export const moneyWay1x2 = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://arbworld.net/en/moneyway/football-1-x-2?hidden=&shown=&timeZone=%2B02%3A00&day=Today&refreshInterval=60&order=Percentage+on+sign&min=0&max=100`,
+        url: `https://arbworld.net/ru/denezhnyye-potoki/football-1-x-2`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
