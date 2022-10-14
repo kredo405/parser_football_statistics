@@ -31,6 +31,18 @@ export const h2hSoccer365 = async (href) => {
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".live_body")
         arrEl.forEach(el => {
+            const matchesH2h = [];
+            el.querySelectorAll('.game_block').forEach(item => {
+                matchesH2h.push({
+                    date: item.querySelector('.status').querySelector('span').textContent.trim(),
+                    homeTeam: item.querySelector('.ht').querySelector('.name').querySelector('span').textContent.trim(),
+                    awayTeam: item.querySelector('.at').querySelector('.name').querySelector('span').textContent.trim(),
+                    homeLogo: item.querySelector('.ht').querySelector('.name').querySelector('img').getAttribute('src').trim(),
+                    awayLogo: item.querySelector('.at').querySelector('.name').querySelector('img').getAttribute('src').trim(),
+                    homeGoals: item.querySelector('.ht').querySelector('.gls').textContent.trim(),
+                    awayGoals: item.querySelector('.at').querySelector('.gls').textContent.trim(),
+                })
+            })
             match.push({
                 matches: el.querySelector('#result_data_h2h').querySelector('.h2h_main_left').querySelector('.games_value').textContent.trim(),
                 homeWin: el.querySelector('#result_data_h2h').querySelector('.h2h_main_right').querySelectorAll('.h2h_stats_item')[0].querySelector('.inf_vleft')
@@ -41,6 +53,7 @@ export const h2hSoccer365 = async (href) => {
                     .querySelector('div').querySelector('span').textContent.trim(),
                 awayGoalsAvg: el.querySelector('#result_data_h2h').querySelector('.h2h_main_right').querySelectorAll('.h2h_stats_item')[2].querySelector('.inf_vright')
                     .querySelector('div').querySelector('span').textContent.trim(),
+                matchesh2h: matchesH2h,    
             });
         })
 

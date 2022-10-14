@@ -30,6 +30,32 @@ export const formSoccer365 = async (href) => {
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".live_body")
         arrEl.forEach(el => {
+            const matchesHome = [];
+            el.querySelectorAll('.live_block_hf')[0].querySelectorAll('.game_block').forEach(item => {
+                matchesHome.push({
+                    date: item.querySelector('.status').querySelector('span').textContent.trim(),
+                    homeTeam: item.querySelector('.ht').querySelector('.name').querySelector('span').textContent.trim(),
+                    awayTeam: item.querySelector('.at').querySelector('.name').querySelector('span').textContent.trim(),
+                    homeLogo: item.querySelector('.ht').querySelector('img').getAttribute('src').trim(),
+                    awayLogo: item.querySelector('.at').querySelector('img').getAttribute('src').trim(),
+                    homeGoals: item.querySelector('.ht').querySelector('.gls').textContent.trim(),
+                    awayGoals: item.querySelector('.at').querySelector('.gls').textContent.trim(),
+                })
+            })
+
+            const matchesAway = [];
+            el.querySelectorAll('.live_block_hf')[1].querySelectorAll('.game_block').forEach(item => {
+                matchesAway.push({
+                    date: item.querySelector('.status').querySelector('span').textContent.trim(),
+                    homeTeam: item.querySelector('.ht').querySelector('.name').querySelector('span').textContent.trim(),
+                    awayTeam: item.querySelector('.at').querySelector('.name').querySelector('span').textContent.trim(),
+                    homeLogo: item.querySelector('.ht').querySelector('img').getAttribute('src').trim(),
+                    awayLogo: item.querySelector('.at').querySelector('img').getAttribute('src').trim(),
+                    homeGoals: item.querySelector('.ht').querySelector('.gls').textContent.trim(),
+                    awayGoals: item.querySelector('.at').querySelector('.gls').textContent.trim(),
+                })
+            })
+
             match.push({
                 relaxationHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[1].querySelectorAll('td')[0].textContent.trim(),
                 relaxationAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[1].querySelectorAll('td')[2].textContent.trim(),
@@ -73,6 +99,8 @@ export const formSoccer365 = async (href) => {
                 ofsidesAway: el.querySelectorAll('.compare')[1].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[2].textContent.trim(),
                 ofsidesVsHome: el.querySelectorAll('.compare')[1].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[0].textContent.trim(),
                 ofsidesVsAway: el.querySelectorAll('.compare')[1].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[2].textContent.trim(),
+                matchesHome: matchesHome,
+                matchesAway: matchesAway,
             });
         })
 

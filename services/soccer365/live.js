@@ -66,6 +66,8 @@ export const liveSoccer365 = async (href) => {
                         .querySelectorAll('.stats_inf')[0].textContent.trim(),
                     attacksDangerAway: el.querySelector('#clubs_stats').querySelectorAll('.stats_items')[1].querySelectorAll('.stats_item')[2]
                         .querySelectorAll('.stats_inf')[1].textContent.trim(),
+                    lineupsHome: el.querySelector('#lineups').querySelector('#tm-players-position-view').querySelector('.ht_frm').textContent.trim(),
+                    lineupsAway: el.querySelector('#lineups').querySelector('#tm-players-position-view').querySelector('.at_frm').textContent.trim(), 
                 });
             }
         })

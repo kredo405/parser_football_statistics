@@ -10,6 +10,7 @@ import { matchSoccer365 } from './services/soccer365/matchSoccer365.js';
 import { h2hSoccer365 } from './services/soccer365/h2h.js';
 import { formSoccer365 } from './services/soccer365/form.js';
 import { liveSoccer365 } from './services/soccer365/live.js';
+import { lineupsSoccer365 } from './services/soccer365/lineups.js';
 
 
 const app = express()
@@ -43,6 +44,11 @@ app.get('/h2h', async (req, res) => {
 app.get('/form', async (req, res) => {
   const form = await formSoccer365(req.query.id)
   res.json({ form })
+});
+
+app.get('/lineups', async (req, res) => {
+  const lineups = await lineupsSoccer365(req.query.id)
+  res.json({ lineups })
 });
 
 // arbworld 
