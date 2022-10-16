@@ -59,22 +59,46 @@ export const formSoccer365 = async (href) => {
             match.push({
                 relaxationHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[1].querySelectorAll('td')[0].textContent.trim(),
                 relaxationAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[1].querySelectorAll('td')[2].textContent.trim(),
-                winsHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[0].querySelector('span').textContent.trim(),
-                winsAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[2].querySelector('span').textContent.trim(),
-                drawHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[0].querySelector('span').textContent.trim(),
-                drawAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[2].querySelector('span').textContent.trim(),
-                losesHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[0].querySelector('span').textContent.trim(),
-                losesAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[2].querySelector('span').textContent.trim(),
+                winsHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[0].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[0].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[0].textContent.trim(),
+                winsAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[2].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[2].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[2].querySelectorAll('td')[2].textContent.trim(),
+                drawHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[0].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[0].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[0].textContent.trim(),
+                drawAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[2].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[2].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[3].querySelectorAll('td')[2].textContent.trim(),
+                losesHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[0].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[0].querySelector('span').textContent.trim() :
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[0].textContent.trim(),
+                losesAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[2].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[2].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[4].querySelectorAll('td')[2].textContent.trim(),
                 goalsForAvgHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[7].querySelectorAll('td')[0].textContent.trim(),
                 goalsForAvgAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[7].querySelectorAll('td')[2].textContent.trim(),
                 goalsAgainstAvgHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[8].querySelectorAll('td')[0].textContent.trim(),
                 goalsAgainstAvgAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[8].querySelectorAll('td')[2].textContent.trim(),
-                btsHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[0].querySelector('span').textContent.trim(),
-                btsAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[2].querySelector('span').textContent.trim(),
-                totalOverHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[0].querySelector('span').textContent.trim(),
-                totalOverAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[2].querySelector('span').textContent.trim(),
-                totalUnderHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[0].querySelector('span').textContent.trim(),
-                totalUnderAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[2].querySelector('span').textContent.trim(),
+                btsHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[0].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[0].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[0].textContent.trim(),
+                btsAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[2].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[2].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[10].querySelectorAll('td')[2].textContent.trim(),
+                totalOverHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[0].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[0].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[0].textContent.trim(),
+                totalOverAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[2].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[2].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[11].querySelectorAll('td')[2].textContent.trim(),
+                totalUnderHome: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[0].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[0].querySelector('span').textContent.trim() : 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[0].textContent.trim(),
+                totalUnderAway: el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[2].querySelector('span') ? 
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[2].querySelector('span').textContent.trim() :
+                el.querySelectorAll('.compare')[0].querySelector('tbody').querySelectorAll('tr')[12].querySelectorAll('td')[2].textContent.trim(),
                 shotsHome: el.querySelectorAll('.compare')[1].querySelector('tbody').querySelectorAll('tr')[0].querySelectorAll('td')[0].textContent.trim(),
                 shotsAway: el.querySelectorAll('.compare')[1].querySelector('tbody').querySelectorAll('tr')[0].querySelectorAll('td')[2].textContent.trim(),
                 shotsVsHome: el.querySelectorAll('.compare')[1].querySelector('tbody').querySelectorAll('tr')[1].querySelectorAll('td')[0].textContent.trim(),
