@@ -13,6 +13,8 @@ import { liveSoccer365 } from './services/soccer365/live.js';
 import { lineupsSoccer365 } from './services/soccer365/lineups.js';
 import { vpluse } from './services/prediction/vpluse.js';
 import { oodsRu } from './services/prediction/oddsRu.js';
+import { getDroppingOdds1X2 } from './services/arbworld/droppingOdds1x2.js';
+import { getDroppingOddsUnderOver } from './services/arbworld/droppingOddsUO.js';
 
 
 const app = express()
@@ -65,6 +67,14 @@ app.get('/moneyWayUnderOver', async (req, res) => {
 app.get('/correctScore', async (req, res) => {
   const moneyWay = await correctScore()
   res.json({ moneyWay })
+});
+app.get('/droppingOdds1X2', async (req, res) => {
+  const droppingOdds = await getDroppingOdds1X2()
+  res.json({ droppingOdds })
+});
+app.get('/droppingOddsUnderOver', async (req, res) => {
+  const droppingOdds = await getDroppingOddsUnderOver()
+  res.json({ droppingOdds })
 });
 
 // Прогнозы
