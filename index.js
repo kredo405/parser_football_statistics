@@ -11,6 +11,8 @@ import { h2hSoccer365 } from './services/soccer365/h2h.js';
 import { formSoccer365 } from './services/soccer365/form.js';
 import { liveSoccer365 } from './services/soccer365/live.js';
 import { lineupsSoccer365 } from './services/soccer365/lineups.js';
+import { vpluse } from './services/prediction/vpluse.js';
+import { oodsRu } from './services/prediction/oddsRu.js';
 
 
 const app = express()
@@ -76,6 +78,15 @@ app.get('/betzona', async (req, res) => {
   res.json({ predicitons })
 });
 
+app.get('/vpluse', async (req, res) => {
+  const predicitons = await vpluse()
+  res.json({ predicitons })
+});
+
+app.get('/oddsRu', async (req, res) => {
+  const predicitons = await oodsRu()
+  res.json({ predicitons })
+});
 // Port Number
 const port = 8000;
 

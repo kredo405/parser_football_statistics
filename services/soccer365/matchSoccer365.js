@@ -48,13 +48,20 @@ export const matchSoccer365 = async (href) => {
                 homeGoal: el.querySelector('.block_body_nopadding').querySelector('.left').querySelector('.live_game_goal').querySelector('span').textContent.trim(),
                 awayGoal: el.querySelector('.block_body_nopadding').querySelector('.right').querySelector('.live_game_goal').querySelector('span').textContent.trim(),
                 odds: {
-                    oddHomeWin: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[1].querySelector('a').querySelector('.koeff').textContent.trim(),
-                    oddDraw: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[2].querySelector('a').querySelector('.koeff').textContent.trim(),
-                    oddAwayWin: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[3].querySelector('a').querySelector('.koeff').textContent.trim(),
-                    oddTotalU25: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[4].querySelector('a').querySelector('.koeff').textContent.trim(),
-                    oddTotalO25: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[5].querySelector('a').querySelector('.koeff').textContent.trim(),
-                    oddBtsYes: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[6].querySelector('a').querySelector('.koeff').textContent.trim(),
-                    oddBtsNo: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[7].querySelector('a').querySelector('.koeff').textContent.trim(),
+                    oddHomeWin: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[1] ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[1].querySelector('a').querySelector('.koeff').textContent.trim() : null,
+                    oddDraw: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[2] ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[2].querySelector('a').querySelector('.koeff').textContent.trim() : null,
+                    oddAwayWin: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[3].querySelector('a') ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[3].querySelector('a').querySelector('.koeff').textContent.trim() : null,
+                    oddTotalU25: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[4] ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[4].querySelector('a').querySelector('.koeff').textContent.trim() : null,
+                    oddTotalO25: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[5] ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[5].querySelector('a').querySelector('.koeff').textContent.trim() : null,
+                    oddBtsYes: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[6] ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[6].querySelector('a').querySelector('.koeff').textContent.trim() : null,
+                    oddBtsNo: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[7] ? 
+                    el.querySelector('.adv_kef_wgt').querySelectorAll('td')[7].querySelector('a').querySelector('.koeff').textContent.trim() : null,
                 },
                 percentOutcomes: {
                     home: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_1').querySelector('span').textContent.trim(),
