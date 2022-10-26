@@ -49,7 +49,9 @@ export const matchSoccer365 = async (href) => {
                 awayLogo: el.querySelector('.block_body_nopadding').querySelector('.right').querySelector('.live_game_tlogo').querySelector('img').getAttribute('src').trim(),
                 homeGoal: el.querySelector('.block_body_nopadding').querySelector('.left').querySelector('.live_game_goal').querySelector('span').textContent.trim(),
                 awayGoal: el.querySelector('.block_body_nopadding').querySelector('.right').querySelector('.live_game_goal').querySelector('span').textContent.trim(),
-                odds: {
+                odds: el.querySelector('.adv_kef_wgt') ? 
+
+                {
                     oddHomeWin: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[1] ?
                         el.querySelector('.adv_kef_wgt').querySelectorAll('td')[1].querySelector('a').querySelector('.koeff').textContent.trim() : null,
                     oddDraw: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[2] ?
@@ -64,7 +66,7 @@ export const matchSoccer365 = async (href) => {
                         el.querySelector('.adv_kef_wgt').querySelectorAll('td')[6].querySelector('a').querySelector('.koeff').textContent.trim() : null,
                     oddBtsNo: el.querySelector('.adv_kef_wgt').querySelectorAll('td')[7] ?
                         el.querySelector('.adv_kef_wgt').querySelectorAll('td')[7].querySelector('a').querySelector('.koeff').textContent.trim() : null,
-                },
+                } : null,
                 percentOutcomes: {
                     home: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_1').querySelector('span').textContent.trim(),
                     draw: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_0').querySelector('span').textContent.trim(),
