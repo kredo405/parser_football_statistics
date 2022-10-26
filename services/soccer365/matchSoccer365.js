@@ -31,14 +31,16 @@ export const matchSoccer365 = async (href) => {
         let arrEl = dom.window.document.querySelectorAll(".live_body")
         arrEl.forEach(el => {
             const predicitons = [];
-            el.querySelector('#prediction').querySelectorAll('.predict_text').forEach(item => {
-                predicitons.push({
-                    scoreHome: item.querySelector('.options').querySelector('.score1').textContent.trim(),
-                    scoreAway: item.querySelector('.options').querySelector('.score2').textContent.trim(),
-                    text: item.querySelector('.text').textContent.trim(),
+            if(el.querySelector('#prediction').querySelector('.predict_text')) {
+                el.querySelector('#prediction').querySelectorAll('.predict_text').forEach(item => {
+                    predicitons.push({
+                        scoreHome: item.querySelector('.options').querySelector('.score1').textContent.trim(),
+                        scoreAway: item.querySelector('.options').querySelector('.score2').textContent.trim(),
+                        text: item.querySelector('.text').textContent.trim(),
+                    })
                 })
-            })
-
+            }
+            
             match.push({
                 title: el.querySelector('#game_events').querySelector('.block_header').querySelector('h2').textContent.trim(),
                 homeTeam: el.querySelector('.block_body_nopadding').querySelector('.left').querySelector('.live_game_ht').querySelector('a').textContent.trim(),
