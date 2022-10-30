@@ -21,6 +21,7 @@ export const getMatchesSoccer365 = async () => {
         url: `https://soccer365.ru/online/`,
         headers: {
             'User-Agent': desktop_agents[rand],
+            'Time-Zone': 'Minsk/Amsterdam'
         }
     };
     try {
