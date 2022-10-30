@@ -110,11 +110,11 @@ app.get('/leagalbetPredict', async (req, res) => {
   res.json({ predicitons })
 });
 
-app.get('/betzonaPredict', async (req, res) => {
+app.get('/betzona', async (req, res) => {
   const predicitons = await betzonaPredict()
   res.json({ predicitons })
 });
-app.get('/betzona', async (req, res) => {
+app.get('/betzonaPredict', async (req, res) => {
   const predicitons = await betzona(req.query.link)
   res.json({ predicitons })
 });
