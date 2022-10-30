@@ -5,16 +5,26 @@ import { moneyWayUnderOver } from './services/arbworld/moneyUnderOver.js';
 import { correctScore } from './services/arbworld/correctScore.js';
 import { onlineBookmaker } from './services/prediction/onlineBookmaker.js';
 import { betzona } from './services/prediction/betzona.js';
+import { betzonaPredict } from './services/prediction/betzonaPredict.js';
 import { getMatchesSoccer365 } from './services/soccer365/soccer365AllMatches.js';
 import { matchSoccer365 } from './services/soccer365/matchSoccer365.js';
 import { h2hSoccer365 } from './services/soccer365/h2h.js';
 import { formSoccer365 } from './services/soccer365/form.js';
 import { liveSoccer365 } from './services/soccer365/live.js';
 import { lineupsSoccer365 } from './services/soccer365/lineups.js';
-import { vpluse } from './services/prediction/vpluse.js';
+import { stavkiprognozy } from './services/prediction/stavkiprognozy.js';
+import { stavkiprognozyPredict } from './services/prediction/stavkiprognozyPredict.js';
 import { oodsRu } from './services/prediction/oddsRu.js';
 import { getDroppingOdds1X2 } from './services/arbworld/droppingOdds1x2.js';
 import { getDroppingOddsUnderOver } from './services/arbworld/droppingOddsUO.js';
+import { euroFootball } from './services/prediction/euroFootbal.js';
+import { euroFootballPredict } from './services/prediction/euroFootballPredict.js';
+import { liveresult } from './services/prediction/liveResult.js';
+import { liveresultPredict } from './services/prediction/liveresultPredict.js';
+import { legalbet } from './services/prediction/legalBet.js';
+import { leagalbetPredict } from './services/prediction/legalbetPredict.js';
+import { sportAndBets } from './services/prediction/sportAndBets.js';
+import { sportAndBetsPredict } from './services/prediction/sportAndBetsPredict.js';
 
 
 const app = express()
@@ -82,16 +92,63 @@ app.get('/onlineBookmaker', async (req, res) => {
   const predicitons = await onlineBookmaker()
   res.json({ predicitons })
 });
+app.get('/sportAndBets', async (req, res) => {
+  const predicitons = await sportAndBets()
+  res.json({ predicitons })
+});
+app.get('/sportAndBetsPredict', async (req, res) => {
+  const predicitons = await sportAndBetsPredict(req.query.link)
+  res.json({ predicitons })
+});
 
+app.get('/legalbet', async (req, res) => {
+  const predicitons = await legalbet()
+  res.json({ predicitons })
+});
+app.get('/leagalbetPredict', async (req, res) => {
+  const predicitons = await leagalbetPredict(req.query.link)
+  res.json({ predicitons })
+});
+
+app.get('/betzonaPredict', async (req, res) => {
+  const predicitons = await betzonaPredict()
+  res.json({ predicitons })
+});
 app.get('/betzona', async (req, res) => {
-  const predicitons = await betzona()
+  const predicitons = await betzona(req.query.link)
   res.json({ predicitons })
 });
 
-app.get('/vpluse', async (req, res) => {
-  const predicitons = await vpluse()
+app.get('/liveresult', async (req, res) => {
+  const predicitons = await liveresult(req.query.link)
   res.json({ predicitons })
 });
+
+app.get('/liveresultPredict', async (req, res) => {
+  const predicitons = await liveresultPredict(req.query.link)
+  res.json({ predicitons })
+});
+
+app.get('/stavkiprognozy', async (req, res) => {
+  const predicitons = await stavkiprognozy()
+  res.json({ predicitons })
+});
+
+app.get('/euroFootball', async (req, res) => {
+  const predicitons = await euroFootball()
+  res.json({ predicitons })
+});
+
+app.get('/euroFootballPredict', async (req, res) => {
+  const predicitons = await euroFootballPredict(req.query.link)
+  res.json({ predicitons })
+});
+
+app.get('/stavkiprognozyPredict', async (req, res) => {
+  const predicitons = await stavkiprognozyPredict(req.query.link)
+  res.json({ predicitons })
+});
+
 
 app.get('/oddsRu', async (req, res) => {
   const predicitons = await oodsRu()

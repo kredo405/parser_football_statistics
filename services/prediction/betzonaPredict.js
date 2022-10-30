@@ -2,7 +2,7 @@ import axios from 'axios';
 import jsdom from "jsdom";
 const { JSDOM } = jsdom;
 
-const betzona = async () => {
+export const betzonaPredict = async () => {
     const desktop_agents = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -18,7 +18,7 @@ const betzona = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://betobzor.com/prognozy/football/`,
+        url: `https://betzona.ru/bets-sport/prognozi-na-football`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
@@ -26,32 +26,21 @@ const betzona = async () => {
     try {
         const response = await axios.request(options)
         const result = await response.data
-        console.log(result)
         const links = [];
         const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll(".forecast")
+        let arrEl = dom.window.document.querySelectorAll(".prognoz-selected-list")
         arrEl.forEach(el => {
-            // let pos = el.querySelector('.desc').querySelector('.entry-title').querySelector('a').textContent.indexOf('–')
-            // if(pos === -1) {
-            //     pos = el.querySelector('.desc').querySelector('.entry-title').querySelector('a').textContent.indexOf('—')
-            // }
-            // let pos1 = el.querySelector('.desc').querySelector('.entry-title').querySelector('a').textContent.indexOf(':')
-            // if(pos1 === -1) {
-            //     pos1 = el.querySelector('.desc').querySelector('.entry-title').querySelector('a').textContent.indexOf('прогноз')
-            // }
-            
+            const pos = el.querySelector('.link_flex').querySelectorAll('div')[0].querySelector('.prognoz-match').textContent.indexOf('-')
             links.push({
-                link: `https://sportandbets.com${el.querySelector('.description').querySelector('a').getAttribute('href')}`,
-                // homeName: el.querySelector('.desc').querySelector('.entry-title').querySelector('a').textContent.slice(0, pos).trim(),
-                // awayName: el.querySelector('.desc').querySelector('.entry-title').querySelector('a').textContent.slice(pos + 1, pos1).trim(),
+                link:`https://betzona.ru${el.querySelector('.link_flex').getAttribute('href')}`,
+                homeName: el.querySelector('.link_flex').querySelectorAll('div')[0].querySelector('.prognoz-match').textContent.slice(0, pos).trim(),
+                awayName: el.querySelector('.link_flex').querySelectorAll('div')[0].querySelector('.prognoz-match').textContent.slice(pos + 1).trim(),
             });
         })
-
-        console.log(links)
+        
+        return links
     }
     catch (error) {
         console.log(error);
     }
 };
-
-betzona()
