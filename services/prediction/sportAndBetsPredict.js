@@ -29,10 +29,10 @@ export const sportAndBetsPredict = async (link) => {
         const result = await response.data
         const dom = new JSDOM(result)
 
-        const matches = {
+        const matches = [{
             text: dom.window.document.querySelector("#a_forecast_text").querySelectorAll('p')[0].textContent.trim(),
             predict: dom.window.document.querySelector("#a_forecast_text").querySelectorAll('p')[1].textContent.trim(),
-        }
+        }]
 
         return matches
     }

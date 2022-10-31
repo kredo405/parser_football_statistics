@@ -28,7 +28,7 @@ export const liveresultPredict = async (link) => {
         const response = await axios.request(options)
         const result = await response.data
         const dom = new JSDOM(result)
-        const matches = {
+        const matches = [{
             text: dom.window.document.querySelector('#tab-tip').querySelector('.tip-page-tex').textContent.trim(),
             predict: dom.window.document.querySelector('#tab-tip').querySelector('.tip-page-rates-rate').querySelectorAll('div')[0].querySelectorAll('div')[0].textContent.trim(),
             percent: {
@@ -48,7 +48,7 @@ export const liveresultPredict = async (link) => {
                     .querySelectorAll('.chart')[2].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim(),
             }
 
-        }
+        }]
 
         return matches
     }

@@ -29,10 +29,10 @@ export const leagalbetPredict = async (link) => {
         const result = await response.data
         const dom = new JSDOM(result)
 
-        const matches = {
+        const matches = [{
             text: dom.window.document.querySelector(".content-body") ? dom.window.document.querySelector(".content-body").querySelector('p').textContent.trim() : null,
             predict: dom.window.document.querySelector(".content-body") ? dom.window.document.querySelector(".content-body").querySelector('.link-text').textContent.trim() : null
-        }
+        }]
 
         return matches
     }
