@@ -31,23 +31,8 @@ export const betzona = async (link) => {
         let arrEl = dom.window.document.querySelectorAll(".forecast-description")
         arrEl.forEach(el => {
             matches.push({
-                homeName: el.querySelector('.head').querySelector('.formatch').querySelector('.formatch_left').querySelector('.formatch_name').querySelector('.name').textContent,
-                awayName: el.querySelector('.head').querySelector('.formatch').querySelector('.formatch_right').querySelector('.formatch_name').querySelector('.name').textContent,
-                homeLogo: `https://betzona.ru${el.querySelector('.head').querySelector('.formatch').querySelector('.formatch_left').querySelector('.formatch_name').querySelector('.img_box').querySelector('.img_team').getAttribute('src')}`,
-                awayLogo: `https://betzona.ru${el.querySelector('.head').querySelector('.formatch').querySelector('.formatch_right').querySelector('.formatch_name').querySelector('.img_box').querySelector('.img_team').getAttribute('src')}`,
-                league: el.querySelector('.head').querySelector('.formatch_data').querySelector('.list_formatch_data').querySelectorAll('li')[0].querySelector('.formatch_data_one').querySelector('.date').textContent,
-                date: el.querySelector('.head').querySelector('.formatch_data').querySelector('.list_formatch_data').querySelectorAll('li')[1].querySelector('.formatch_data_one').querySelector('.date').textContent,
-                homePreview: {
-                    info: el.querySelectorAll('.team-info')[0].querySelector('.info').querySelector('p').textContent,
-                },
-                awayPreview: {
-                    info: el.querySelectorAll('.team-info')[1].querySelector('.info').querySelector('p').textContent,
-                },
-                forecast: {
                     text: el.querySelector('.forecast-info').querySelector('.bpdr').textContent,
-                    bet: el.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.bet_name').textContent,
-                    odd: el.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.ratio').textContent,
-                }
+                    predict: el.querySelector('.forecast-info').querySelector('.bet').querySelector('.bet-info').querySelector('.bet_name').textContent,
             })
         })
 
