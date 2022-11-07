@@ -32,20 +32,20 @@ export const liveresultPredict = async (link) => {
             text: dom.window.document.querySelector('#tab-tip').querySelector('.tip-page-tex').textContent.trim(),
             predict: dom.window.document.querySelector('#tab-tip').querySelector('.tip-page-rates-rate').querySelectorAll('div')[0].querySelectorAll('div')[0].textContent.trim(),
             percent: {
-                winerHome: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[0].querySelectorAll('.forecast2-match-results-item')[0].querySelector('.legend').querySelector('.result').textContent.trim(),
-                draw: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[0].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim(),
-                winerAway: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[0].querySelectorAll('.forecast2-match-results-item')[2].querySelector('.legend').querySelector('.result').textContent.trim(),
-                totlaOver: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[1].querySelectorAll('.forecast2-match-results-item')[0].querySelector('.legend').querySelector('.result').textContent.trim(),
-                totalUnder: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[1].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim(),
-                btsYes: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[2].querySelectorAll('.forecast2-match-results-item')[0].querySelector('.legend').querySelector('.result').textContent.trim(),
-                btsNo: dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
-                    .querySelectorAll('.chart')[2].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim(),
+                winerHome: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[0].querySelectorAll('.forecast2-match-results-item')[0].querySelector('.legend').querySelector('.result').textContent.trim() : null,
+                draw: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[0].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim() : null,
+                winerAway: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[0].querySelectorAll('.forecast2-match-results-item')[2].querySelector('.legend').querySelector('.result').textContent.trim() : null,
+                totlaOver: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[1].querySelectorAll('.forecast2-match-results-item')[0].querySelector('.legend').querySelector('.result').textContent.trim() : null,
+                totalUnder: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[1].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim() : null,
+                btsYes: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[2].querySelectorAll('.forecast2-match-results-item')[0].querySelector('.legend').querySelector('.result').textContent.trim() : null,
+                btsNo: dom.window.document.querySelector('#tab-forecast') ? dom.window.document.querySelector('#tab-forecast').querySelector('.forecast2-match-results').querySelector('.order-2')
+                    .querySelectorAll('.chart')[2].querySelectorAll('.forecast2-match-results-item')[1].querySelector('.legend').querySelector('.result').textContent.trim() : null,
             }
 
         }]
