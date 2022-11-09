@@ -2,7 +2,7 @@ import axios from 'axios';
 import jsdom from "jsdom";
 const { JSDOM } = jsdom;
 
-export const oddsRu = async () => {
+export const liveresultVotes = async () => {
     const desktop_agents = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -18,7 +18,7 @@ export const oddsRu = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://odds.ru/football/`,
+        url: `https://www.liveresult.ru/`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
@@ -30,17 +30,13 @@ export const oddsRu = async () => {
         const links = [];
         console.log(result)
         const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll(".table-tournaments__row_content")
-        arrEl.forEach(el => {  
-            if(el.querySelector('.table-tournaments__cell_forecasts').querySelector('.table-tournaments__forecast')) {
-                links.push({
-                    link: `https://odds.ru${el.querySelector('.table-tournaments__cell_teams').querySelector('.table-tournaments__team-content').getAttribute('href')}`,
-                    linkForecast: `https://odds.ru${el.querySelector('.table-tournaments__cell_teams').querySelector('.table-tournaments__team-content').getAttribute('href')}forecasts/`,
-                    linkStatistics: `https://odds.ru${el.querySelector('.table-tournaments__cell_teams').querySelector('.table-tournaments__team-content').getAttribute('href')}statistics/`,
-                    homeName: el.querySelector('.table-tournaments__cell_teams').querySelector('.table-tournaments__team-content').querySelectorAll('.table-tournaments__team-name')[0].textContent.trim(),
-                    awayName: el.querySelector('.table-tournaments__cell_teams').querySelector('.table-tournaments__team-content').querySelectorAll('.table-tournaments__team-name')[1].textContent.trim()
-                });
-            }    
+        let arrEl = dom.window.document.querySelectorAll(".live-match ")
+        arrEl.forEach(el => {
+            links.push({
+                link: `https://www.liveresult.ru${el.querySelector('.teams').getAttribute('href')}`,
+                homeName: el.querySelector('.teams').querySelector('.team1').textContent.trim(),
+                awayName: el.querySelector('.teams').querySelector('.team2').textContent.trim()
+            });
         })
         return links
     }

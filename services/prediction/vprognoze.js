@@ -3,7 +3,7 @@ import jsdom from "jsdom";
 const { JSDOM } = jsdom;
 import puppeteer from 'puppeteer';
 
-const test = async () => {
+export const vprognoze = async () => {
 
     try {
         const browser = await puppeteer.launch({
@@ -42,4 +42,3 @@ const test = async () => {
     }
 };
 
-test()
