@@ -14,7 +14,6 @@ import { liveSoccer365 } from './services/soccer365/live.js';
 import { lineupsSoccer365 } from './services/soccer365/lineups.js';
 import { stavkiprognozy } from './services/prediction/stavkiprognozy.js';
 import { stavkiprognozyPredict } from './services/prediction/stavkiprognozyPredict.js';
-import { oodsRu } from './services/prediction/oddsRu.js';
 import { getDroppingOdds1X2 } from './services/arbworld/droppingOdds1x2.js';
 import { getDroppingOddsUnderOver } from './services/arbworld/droppingOddsUO.js';
 import { euroFootball } from './services/prediction/euroFootbal.js';
@@ -27,7 +26,7 @@ import { sportAndBets } from './services/prediction/sportAndBets.js';
 import { sportAndBetsPredict } from './services/prediction/sportAndBetsPredict.js';
 import { oddsRu } from './services/prediction/oddsRu.js';
 import { oddsRuPredict } from './services/prediction/oddsRuPredict.js';
-
+import { vprognoze } from './services/prediction/vprognoze.js';
 
 
 const app = express()
@@ -91,6 +90,11 @@ app.get('/droppingOddsUnderOver', async (req, res) => {
 });
 
 // Прогнозы
+app.get('/vprognoze', async (req, res) => {
+  const predicitons = await vprognoze()
+  res.json({ predicitons })
+});
+
 app.get('/onlineBookmaker', async (req, res) => {
   const predicitons = await onlineBookmaker()
   res.json({ predicitons })
