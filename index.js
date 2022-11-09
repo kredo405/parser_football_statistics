@@ -27,7 +27,7 @@ import { sportAndBets } from './services/prediction/sportAndBets.js';
 import { sportAndBetsPredict } from './services/prediction/sportAndBetsPredict.js';
 import { oddsRu } from './services/prediction/oddsRu.js';
 import { oddsRuPredict } from './services/prediction/oddsRuPredict.js';
-// import { vprognoze } from './services/prediction/vprognoze.js';
+import { vprognoze } from './services/prediction/vprognoze.js';
 
 
 const app = express()
@@ -91,10 +91,10 @@ app.get('/droppingOddsUnderOver', async (req, res) => {
 });
 
 // Прогнозы
-// app.get('/vprognoze', async (req, res) => {
-//   const predicitons = await vprognoze()
-//   res.json({ predicitons })
-// });
+app.get('/vprognoze', async (req, res) => {
+  const predicitons = await vprognoze()
+  res.json({ predicitons })
+});
 
 app.get('/onlineBookmaker', async (req, res) => {
   const predicitons = await onlineBookmaker()
