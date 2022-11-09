@@ -7,7 +7,7 @@ export const vprognoze = async () => {
 
     try {
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             ignoreHTTPSErrors: true,
         })
 
