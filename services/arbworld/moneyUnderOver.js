@@ -18,7 +18,7 @@ export const moneyWayUnderOver = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://arbworld.net/ru/denezhnyye-potoki/football-mnee-bolee-25-golov`,
+        url: `https://arbworld.net/ru/denezhnyye-potoki/football-mnee-bolee-25-golov?hidden=&shown=&timeZone=%2B02%3A00&day=Today&refreshInterval=60&order=Percentage+on+sign&min=0&max=100`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
