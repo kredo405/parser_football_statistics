@@ -1,9 +1,14 @@
 import axios from 'axios';
 import jsdom from "jsdom";
 const { JSDOM } = jsdom;
+import { collection, doc, setDoc, getFirestore } from "firebase/firestore"; 
 import puppeteer from 'puppeteer';
+import { app } from '../../firebase.js';
 
 export const vprognoze = async () => {
+
+    const db = getFirestore(app);
+    const predictionsRef = collection(db, "predictions");
 
     try {
         const browser = await puppeteer.launch({
@@ -35,6 +40,10 @@ export const vprognoze = async () => {
         })
 
         console.log(data)
+        await setDoc(doc(predictionsRef, "vprognoze"), {
+            data: [...data]
+        });
+
         await browser.close();
     }
     catch (error) {

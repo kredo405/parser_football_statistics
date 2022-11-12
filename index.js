@@ -26,7 +26,8 @@ import { sportAndBets } from './services/prediction/sportAndBets.js';
 import { sportAndBetsPredict } from './services/prediction/sportAndBetsPredict.js';
 import { oddsRu } from './services/prediction/oddsRu.js';
 import { oddsRuPredict } from './services/prediction/oddsRuPredict.js';
-import { vprognoze } from './services/prediction/vprognoze.js';
+import { liveResultVotes } from './services/tools/liveResultVotes.js';
+import { liveresultVote } from './services/tools/liveResultVote.js';
 
 
 const app = express()
@@ -36,6 +37,15 @@ app.use(cors())
 // Sample api routes for testing
 app.get('/', (req, res) => {
   res.json("welcome to our server")
+});
+// получение голосов
+app.get('/liveResultVotes', async (req, res) => {
+  const predicitons = await liveResultVotes()
+  res.json({ predicitons })
+});
+app.get('/liveresultVote', async (req, res) => {
+  const predicitons = await liveresultVote(req.query.link)
+  res.json({ predicitons })
 });
 
 // получение матчей
@@ -90,11 +100,6 @@ app.get('/droppingOddsUnderOver', async (req, res) => {
 });
 
 // Прогнозы
-app.get('/vprognoze', async (req, res) => {
-  const predicitons = await vprognoze()
-  res.json({ predicitons })
-});
-
 app.get('/onlineBookmaker', async (req, res) => {
   const predicitons = await onlineBookmaker()
   res.json({ predicitons })
