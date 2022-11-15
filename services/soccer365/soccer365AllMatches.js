@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jsdom from "jsdom";
-import moment from 'moment/moment';
+import moment from 'moment/moment.js';
 const { JSDOM } = jsdom;
 
 export const getMatchesSoccer365 = async () => {
