@@ -30,12 +30,14 @@ export const liveresult = async () => {
         const links = [];
         console.log(result)
         const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll(".tips-list-tip-col")
+        let arrEl = dom.window.document.querySelectorAll(".tips-list-tip")
         arrEl.forEach(el => {
             links.push({
                 link: `https://www.liveresult.ru${el.querySelector('.tips-list-tip-link').getAttribute('href')}`,
-                homeName: el.querySelectorAll('.tips-list-tip-teams-team')[0].textContent.trim(),
-                awayName: el.querySelectorAll('.tips-list-tip-teams-team')[1].textContent.trim()
+                homeName: el.querySelector('.tips-list-tip-link').querySelectorAll('.tips-list-tip-teams-team')[0] ? 
+                el.querySelector('.tips-list-tip-link').querySelectorAll('.tips-list-tip-teams-team')[0].textContent.trim() : null,
+                awayName: el.querySelector('.tips-list-tip-link').querySelectorAll('.tips-list-tip-teams-team')[1] ? 
+                el.querySelector('.tips-list-tip-link').querySelectorAll('.tips-list-tip-teams-team')[1].textContent.trim() : null
             });
         })
         return links
