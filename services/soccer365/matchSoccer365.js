@@ -68,9 +68,12 @@ export const matchSoccer365 = async (href) => {
                         el.querySelector('.adv_kef_wgt').querySelectorAll('td')[7].querySelector('a').querySelector('.koeff').textContent.trim() : null,
                 } : null,
                 percentOutcomes: {
-                    home: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_1').querySelector('span').textContent.trim(),
-                    draw: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_0').querySelector('span').textContent.trim(),
-                    away: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_2').querySelector('span').textContent.trim(),
+                    home: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_1') ? 
+                    el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_1').querySelector('span').textContent.trim() : null,
+                    draw: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_0') ? 
+                    el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_0').querySelector('span').textContent.trim() : null,
+                    away: el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_2') ? 
+                    el.querySelector('#prediction').querySelector('.charts_progress').querySelector('.charts_progress_2').querySelector('span').textContent.trim() : null,
                 },
                 predictions: predicitons,
 
