@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jsdom from "jsdom";
+import moment from 'moment/moment';
 const { JSDOM } = jsdom;
 
 export const getMatchesSoccer365 = async () => {
@@ -18,7 +19,7 @@ export const getMatchesSoccer365 = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://soccer365.ru/online/`,
+        url: `https://soccer365.ru/online/&date=${moment().format('YYYY MM DD')}`,
         headers: {
             'User-Agent': desktop_agents[rand],
             'Time-Zone': 'Minsk/Amsterdam'
