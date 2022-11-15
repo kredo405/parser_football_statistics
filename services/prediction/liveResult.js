@@ -33,7 +33,7 @@ export const liveresult = async () => {
         let arrEl = dom.window.document.querySelectorAll(".tips-list-tip-col")
         arrEl.forEach(el => {
             links.push({
-                link: `https://www.liveresult.ru${el.querySelector('.tips-list-tip-teams').getAttribute('href')}`,
+                link: `https://www.liveresult.ru${el.querySelector('.tips-list-tip-link').getAttribute('href')}`,
                 homeName: el.querySelectorAll('.tips-list-tip-teams-team')[0].textContent.trim(),
                 awayName: el.querySelectorAll('.tips-list-tip-teams-team')[1].textContent.trim()
             });
