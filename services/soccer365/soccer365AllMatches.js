@@ -19,7 +19,7 @@ export const getMatchesSoccer365 = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://soccer365.ru/online/&date=${moment().format('YYYY MM DD')}`,
+        url: `https://soccer365.ru/online/&date=${moment().format('YYYY-MM-DD')}`,
         headers: {
             'User-Agent': desktop_agents[rand],
             'Time-Zone': 'Minsk/Amsterdam'
