@@ -66,6 +66,7 @@ export const getMatchesSoccer365 = async () => {
                 matchesAndLeague.push({
                     leagueName: el.querySelector('.block_header').querySelector('a').querySelector('div').querySelector('span').textContent.trim(),
                     leagueLogo: el.querySelector('.block_header').querySelector('a').querySelector('div').querySelector('img').getAttribute('src').trim(),
+                    country: el.querySelector('.block_header').querySelector('a').querySelector('div').querySelector('img').getAttribute('src').slice(34, -4).trim(),
                     matches: matches,
                 });
             }
