@@ -30,15 +30,22 @@ export const getDroppingOdds1X2 = async () => {
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".belowHeader")
         arrEl.forEach(el => {
+            const posHome = el.querySelectorAll('.odds_col')[0].innerHTML.indexOf('<br>')
+            const posDraw = el.querySelectorAll('.odds_col')[1].innerHTML.indexOf('<br>')
+            const posAway = el.querySelectorAll('.odds_col')[2].innerHTML.indexOf('<br>')
+
             matches.push({
                 leagueName: el.querySelector('.tleague').textContent.trim(),
                 date: el.querySelector('.tdate').textContent.trim(),
                 homeName: el.querySelector('.thome').textContent.trim(),
                 homeAway: el.querySelector('.taway').textContent.trim(),
                 money: el.querySelector('.tvol').textContent.trim().slice(2),
-                oddsHome: el.querySelectorAll('.odds_col')[0].textContent.trim(),
-                oddsDraw: el.querySelectorAll('.odds_col')[1].textContent.trim(),
-                oddsAway: el.querySelectorAll('.odds_col')[2].textContent.trim(),
+                oddsHomeStart: el.querySelectorAll('.odds_col')[0].innerHTML.slice(0, posHome),
+                oddsDrawStart: el.querySelectorAll('.odds_col')[1].innerHTML.slice(0, posDraw),
+                oddsAwayStart: el.querySelectorAll('.odds_col')[2].innerHTML.slice(0, posAway),
+                oddsHomeEnd: el.querySelectorAll('.odds_col')[0].innerHTML.slice(posHome + 4),
+                oddsDrawEnd: el.querySelectorAll('.odds_col')[1].innerHTML.slice(posDraw + 4),
+                oddsAwayend: el.querySelectorAll('.odds_col')[2].innerHTML.slice(posAway + 4),
             });
         })
 

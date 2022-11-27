@@ -30,14 +30,19 @@ export const getDroppingOddsUnderOver = async () => {
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".belowHeader")
         arrEl.forEach(el => {
+            const posUnder = el.querySelectorAll('.odds_col')[0].innerHTML.indexOf('<br>')
+            const posOver= el.querySelectorAll('.odds_col')[2].innerHTML.indexOf('<br>')
+
             matches.push({
                 leagueName: el.querySelector('.tleague').textContent.trim(),
                 date: el.querySelector('.tdate').textContent.trim(),
                 homeName: el.querySelector('.thome').textContent.trim(),
                 homeAway: el.querySelector('.taway').textContent.trim(),
                 money: el.querySelector('.tvol').textContent.trim().slice(2),
-                oddsUnder: el.querySelectorAll('.odds_col')[0].textContent.trim(),
-                oddsOver: el.querySelectorAll('.odds_col')[2].textContent.trim(),
+                oddsUnderStart: el.querySelectorAll('.odds_col')[0].innerHTML.slice(0, posUnder),
+                oddsOverStart: el.querySelectorAll('.odds_col')[2].innerHTML.slice(0, posOver),
+                oddsUnderEnd: el.querySelectorAll('.odds_col')[0].innerHTML.slice(posUnder + 4),
+                oddsOverEnd: el.querySelectorAll('.odds_col')[2].innerHTML.slice(posOver + 4),
             });
         })
 
