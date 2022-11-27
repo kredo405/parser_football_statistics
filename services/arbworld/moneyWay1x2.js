@@ -30,6 +30,10 @@ export const moneyWay1x2 = async () => {
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".belowHeader")
         arrEl.forEach(el => {
+            const posHome = el.querySelectorAll('.odds_col')[0].innerHTML.indexOf('<br>')
+            const posDraw = el.querySelectorAll('.odds_col')[1].innerHTML.indexOf('<br>')
+            const posAway = el.querySelectorAll('.odds_col')[2].innerHTML.indexOf('<br>')
+
             matches.push({
                 leagueName: el.querySelector('.tleague').textContent.trim(),
                 date: el.querySelector('.tdate').textContent.trim(),
@@ -42,6 +46,9 @@ export const moneyWay1x2 = async () => {
                 percentHome: el.querySelectorAll('.odds_col')[0].textContent.trim(),
                 percentDraw: el.querySelectorAll('.odds_col')[1].textContent.trim(),
                 percentAway: el.querySelectorAll('.odds_col')[2].textContent.trim(),
+                moneyHome: el.querySelectorAll('.odds_col')[0].innerHTML.slice(posHome + 4),
+                moneyDraw: el.querySelectorAll('.odds_col')[1].innerHTML.slice(posDraw + 4),
+                moneyAway: el.querySelectorAll('.odds_col')[2].innerHTML.slice(posAway + 4)
             });
         })
 

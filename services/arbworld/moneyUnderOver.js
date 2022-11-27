@@ -30,6 +30,9 @@ export const moneyWayUnderOver = async () => {
         const dom = new JSDOM(result)
         let arrEl = dom.window.document.querySelectorAll(".belowHeader")
         arrEl.forEach(el => {
+            const posUnder = el.querySelectorAll('.odds_col')[0].innerHTML.indexOf('<br>')
+            const posOver = el.querySelectorAll('.odds_col')[1].innerHTML.indexOf('<br>')
+
             matches.push({
                 leagueName: el.querySelector('.tleague').textContent.trim(),
                 date: el.querySelector('.tdate').textContent.trim(),
@@ -40,6 +43,8 @@ export const moneyWayUnderOver = async () => {
                 oddsOver: el.querySelectorAll('.odds_col_small')[2].textContent.trim(),
                 percentUnder: el.querySelectorAll('.odds_col')[0].textContent.trim(),
                 percentOver: el.querySelectorAll('.odds_col')[1].textContent.trim(),
+                moneyUnder: el.querySelectorAll('.odds_col')[0].innerHTML.slice(posUnder + 4),
+                moneyOver: el.querySelectorAll('.odds_col')[1].innerHTML.slice(posOver + 4)
             });
         })
 
