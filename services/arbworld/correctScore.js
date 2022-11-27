@@ -35,22 +35,118 @@ export const correctScore = async () => {
                 date: el.querySelector('.tdate').textContent.trim(),
                 teamName: el.querySelector('.thome').textContent.trim(),
                 scores: [
-                    { score0_0: el.querySelectorAll('.odds_col')[0].querySelectorAll('div')[1].textContent.trim() },
-                    { score0_1: el.querySelectorAll('.odds_col')[1].querySelectorAll('div')[1].textContent.trim() },
-                    { score0_2: el.querySelectorAll('.odds_col')[2].querySelectorAll('div')[1].textContent.trim() },
-                    { score0_3: el.querySelectorAll('.odds_col')[3].querySelectorAll('div')[1].textContent.trim() },
-                    { score1_0: el.querySelectorAll('.odds_col')[4].querySelectorAll('div')[1].textContent.trim() },
-                    { score1_1: el.querySelectorAll('.odds_col')[5].querySelectorAll('div')[1].textContent.trim() },
-                    { score1_2: el.querySelectorAll('.odds_col')[6].querySelectorAll('div')[1].textContent.trim() },
-                    { score1_3: el.querySelectorAll('.odds_col')[7].querySelectorAll('div')[1].textContent.trim() },
-                    { score2_0: el.querySelectorAll('.odds_col')[8].querySelectorAll('div')[1].textContent.trim() },
-                    { score2_1: el.querySelectorAll('.odds_col')[9].querySelectorAll('div')[1].textContent.trim() },
-                    { score2_2: el.querySelectorAll('.odds_col')[11].querySelectorAll('div')[1].textContent.trim() },
-                    { score2_3: el.querySelectorAll('.odds_col')[12].querySelectorAll('div')[1].textContent.trim() },
-                    { score3_0: el.querySelectorAll('.odds_col')[13].querySelectorAll('div')[1].textContent.trim() },
-                    { score3_1: el.querySelectorAll('.odds_col')[14].querySelectorAll('div')[1].textContent.trim() },
-                    { score3_2: el.querySelectorAll('.odds_col')[15].querySelectorAll('div')[1].textContent.trim() },
-                    { score3_3: el.querySelectorAll('.odds_col')[16].querySelectorAll('div')[1].textContent.trim() },
+                    {
+                        score0_0: {
+                            odd: el.querySelectorAll('.odds_col')[0].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[0].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[0].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score0_1: {
+                            odd: el.querySelectorAll('.odds_col')[1].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[1].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[1].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score0_2: {
+                            odd: el.querySelectorAll('.odds_col')[2].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[2].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[2].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score0_3: {
+                            odd: el.querySelectorAll('.odds_col')[3].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[3].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[3].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score1_0: {
+                            odd: el.querySelectorAll('.odds_col')[4].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[4].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[4].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score1_1: {
+                            odd: el.querySelectorAll('.odds_col')[5].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[5].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[5].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score1_2: {
+                            odd: el.querySelectorAll('.odds_col')[6].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[6].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[6].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score1_3: {
+                            odd: el.querySelectorAll('.odds_col')[7].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[7].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[7].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score2_0: {
+                            odd: el.querySelectorAll('.odds_col')[8].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[8].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[8].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score2_1: {
+                            odd: el.querySelectorAll('.odds_col')[9].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[9].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[9].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score2_2: {
+                            odd: el.querySelectorAll('.odds_col')[10].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[10].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[10].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score2_3: {
+                            odd: el.querySelectorAll('.odds_col')[11].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[11].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[11].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score3_0: {
+                            odd: el.querySelectorAll('.odds_col')[12].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[12].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[12].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score3_1: {
+                            odd: el.querySelectorAll('.odds_col')[13].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[13].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[13].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score3_2: {
+                            odd: el.querySelectorAll('.odds_col')[14].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[14].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[14].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
+                    {
+                        score3_3: {
+                            odd: el.querySelectorAll('.odds_col')[15].querySelectorAll('div')[0].textContent.trim(),
+                            percent: el.querySelectorAll('.odds_col')[15].querySelectorAll('div')[1].textContent.trim(),
+                            money: el.querySelectorAll('.odds_col')[15].querySelectorAll('div')[2].textContent.trim(),
+                        }
+                    },
                 ]
             });
         })
