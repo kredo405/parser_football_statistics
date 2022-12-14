@@ -1,8 +1,6 @@
 import axios from 'axios';
-import jsdom from "jsdom";
-const { JSDOM } = jsdom;
 
-export const liveResultVotes = async () => {
+export const getMatchNbBetPrematch = async (link) => {
     const desktop_agents = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -18,27 +16,16 @@ export const liveResultVotes = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://www.liveresult.ru/`,
+        url: `https://app.nb-bet.com/v1/page-soccer-events/${link}/50/12/true/false/true/false/48/true/true`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
     };
-
     try {
-        const response = await axios.request(options)
-        const result = await response.data
-        const links = [];
-        console.log(result)
-        const dom = new JSDOM(result)
-        let arrEl = dom.window.document.querySelectorAll(".live-match ")
-        arrEl.forEach(el => {
-            links.push({
-                link: `https://www.liveresult.ru${el.querySelector('.teams').getAttribute('href')}`,
-                homeName: el.querySelector('.teams').querySelector('.team1').textContent.trim(),
-                awayName: el.querySelector('.teams').querySelector('.team2').textContent.trim()
-            });
-        })
-        return links
+        const response = await axios.request(options);
+        const result = await response.data;
+
+        return result;
     }
     catch (error) {
         console.log(error);

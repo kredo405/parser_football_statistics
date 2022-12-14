@@ -26,8 +26,9 @@ import { sportAndBets } from './services/prediction/sportAndBets.js';
 import { sportAndBetsPredict } from './services/prediction/sportAndBetsPredict.js';
 import { oddsRu } from './services/prediction/oddsRu.js';
 import { oddsRuPredict } from './services/prediction/oddsRuPredict.js';
-import { liveResultVotes } from './services/tools/liveResultVotes.js';
-import { liveresultVote } from './services/tools/liveResultVote.js';
+import { getMatchesNbBetPrematch } from './services/nbbet/nbbet.js';
+import { getMatchNbBetPrematch } from './services/nbbet/nbbetMatch.js';
+import { getMatchesNbBetPredict } from './services/nbbet/nbbetPredict.js';
 
 
 const app = express()
@@ -38,16 +39,6 @@ app.use(cors())
 app.get('/', (req, res) => {
   res.json("welcome to our server")
 });
-// получение голосов
-app.get('/liveResultVotes', async (req, res) => {
-  const predicitons = await liveResultVotes()
-  res.json({ predicitons })
-});
-app.get('/liveresultVote', async (req, res) => {
-  const predicitons = await liveresultVote(req.query.link)
-  res.json({ predicitons })
-});
-
 // получение матчей
 app.get('/matchesLive', async (req, res) => {
   const matchesLive = await liveSoccer365(req.query.id)
@@ -56,6 +47,19 @@ app.get('/matchesLive', async (req, res) => {
 app.get('/matches', async (req, res) => {
   const matches = await getMatchesSoccer365()
   res.json({ matches })
+});
+// NbBet
+app.get('/nbbetMatches', async (req, res) => {
+  const matches = await getMatchesNbBetPrematch()
+  res.json({ matches })
+});
+app.get('/nbbetMatch', async (req, res) => {
+  const match = await getMatchNbBetPrematch(req.query.link)
+  res.json({ match })
+});
+app.get('/nbbetPredict', async (req, res) => {
+  const match = await getMatchesNbBetPredict(req.query.link)
+  res.json({ match })
 });
 
 // Статистика и прогнозы
@@ -112,7 +116,6 @@ app.get('/sportAndBetsPredict', async (req, res) => {
   const predicitons = await sportAndBetsPredict(req.query.link)
   res.json({ predicitons })
 });
-
 app.get('/legalbet', async (req, res) => {
   const predicitons = await legalbet()
   res.json({ predicitons })
@@ -130,7 +133,6 @@ app.get('/oddsRuPredict', async (req, res) => {
   const predicitons = await oddsRuPredict(req.query.link)
   res.json({ predicitons })
 });
-
 app.get('/betzona', async (req, res) => {
   const predicitons = await betzonaPredict()
   res.json({ predicitons })
