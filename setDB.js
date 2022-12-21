@@ -6,7 +6,7 @@ import { betteam } from './services/prediction/betteam.js';
 const setDB = async () => {
     await vprognoze();
     await betteam();
-    fbref();
+    await fbref();
 }
 
 setDB()
