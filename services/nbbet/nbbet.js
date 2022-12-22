@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getMatchesNbBetPrematch = async () => {
+export const getMatchesNbBetPrematch = async (timestamp) => {
     const desktop_agents = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -13,8 +13,6 @@ export const getMatchesNbBetPrematch = async () => {
         'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'];
 
     let rand = Math.floor(Math.random() * desktop_agents.length);
-
-    const timestamp = Date.now();
 
     const options = {
         method: 'GET',

@@ -50,7 +50,7 @@ app.get('/matches', async (req, res) => {
 });
 // NbBet
 app.get('/nbbetMatches', async (req, res) => {
-  const matches = await getMatchesNbBetPrematch()
+  const matches = await getMatchesNbBetPrematch(req.query.timestamp)
   res.json({ matches })
 });
 app.get('/nbbetMatch', async (req, res) => {
