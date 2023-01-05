@@ -18,7 +18,7 @@ export const correctScore = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://arbworld.net/ru/denezhnyye-potoki/football-tochnyy-rezultat`,
+        url: `https://arbworld.net/ru/padayushchiye-koeffitsiyenty/football-tochnyy-rezultat?hidden=&shown=&timeZone=%2B02%3A00&refreshInterval=60&order=Drop&min=0&max=100&day=Today`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
