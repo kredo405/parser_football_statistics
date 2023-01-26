@@ -16,7 +16,7 @@ export const getPredictionsStavkaTV = async () => {
 
     const options = {
         method: 'GET',
-        url: `https://stavka.tv/api/v2/predictions?betOnTips=false&limit=20&offset=0&period=24h&&rateFrom=1&rateTo=10&sports[]=soccer`,
+        url: `https://stavka.tv/api/v2/predictions?betOnTips=false&limit=100&offset=0&period=24h&&rateFrom=1&rateTo=10&sports[]=soccer`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
