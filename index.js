@@ -29,6 +29,7 @@ import { oddsRuPredict } from './services/prediction/oddsRuPredict.js';
 import { getMatchesNbBetPrematch } from './services/nbbet/nbbet.js';
 import { getMatchNbBetPrematch } from './services/nbbet/nbbetMatch.js';
 import { getMatchesNbBetPredict } from './services/nbbet/nbbetPredict.js';
+import { getPredictionsStavkaTV } from './services/stavkaTV/predictionsStavkaTV.js';
 
 
 const app = express()
@@ -38,6 +39,10 @@ app.use(cors())
 // Sample api routes for testing
 app.get('/', (req, res) => {
   res.json("welcome to our server")
+});
+app.get('/stavkatv', async (req, res) => {
+  const matchesLive = await getPredictionsStavkaTV()
+  res.json({ matchesLive })
 });
 // получение матчей
 app.get('/matchesLive', async (req, res) => {
