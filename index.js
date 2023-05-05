@@ -29,6 +29,7 @@ import { oddsRuPredict } from './services/prediction/oddsRuPredict.js';
 import { getMatchesNbBetPrematch } from './services/nbbet/nbbet.js';
 import { getMatchNbBetPrematch } from './services/nbbet/nbbetMatch.js';
 import { getMatchesNbBetPredict } from './services/nbbet/nbbetPredict.js';
+import { getHisoryOdds } from './services/nbbet/nbBetOdds.js';
 import { getPredictionsStavkaTV } from './services/stavkaTV/predictionsStavkaTV.js';
 
 
@@ -64,6 +65,10 @@ app.get('/nbbetMatch', async (req, res) => {
 });
 app.get('/nbbetPredict', async (req, res) => {
   const match = await getMatchesNbBetPredict(req.query.link)
+  res.json({ match })
+});
+app.get('/nbbetOdds', async (req, res) => {
+  const match = await getHisoryOdds(req.query.link)
   res.json({ match })
 });
 
