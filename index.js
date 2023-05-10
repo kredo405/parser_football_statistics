@@ -31,6 +31,7 @@ import { getMatchNbBetPrematch } from './services/nbbet/nbbetMatch.js';
 import { getMatchesNbBetPredict } from './services/nbbet/nbbetPredict.js';
 import { getHisoryOdds } from './services/nbbet/nbBetOdds.js';
 import { getPredictionsStavkaTV } from './services/stavkaTV/predictionsStavkaTV.js';
+import { getMatchesNbBetPrematchHockey } from './services/nbbet/nbBetHockey.js';
 
 
 const app = express()
@@ -57,6 +58,10 @@ app.get('/matches', async (req, res) => {
 // NbBet
 app.get('/nbbetMatches', async (req, res) => {
   const matches = await getMatchesNbBetPrematch(req.query.timestamp)
+  res.json({ matches })
+});
+app.get('/nbbetMatchesHockey', async (req, res) => {
+  const matches = await getMatchesNbBetPrematchHockey(req.query.timestamp)
   res.json({ matches })
 });
 app.get('/nbbetMatch', async (req, res) => {
