@@ -60,9 +60,14 @@ export const getMatchDataExcaper = async (link) => {
                 },
             }));
 
+            const teams = dom.window.document
+                .querySelector(`h1`)
+                .textContent.trim();
+
             return {
                 market: value,
                 values: items,
+                teams: teams,
             };
         });
 
