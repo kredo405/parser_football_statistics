@@ -31,7 +31,8 @@ export const getAllMatchesExcaper = async (link) => {
 
         const match = [];
         const dom = new JSDOM(result);
-        let arrEl = dom.window.document.querySelectorAll(".a_link");
+        let element = dom.window.document.querySelector("#premach");
+        let arrEl = element.querySelectorAll(".a_link");
         arrEl.forEach((el) => {
             match.push({
                 link: el.getAttribute("data-game-link").trim(),
