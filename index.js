@@ -57,14 +57,16 @@ app.get("/matchesExcaperAll", async (req, res) => {
     res.json({ matches });
 });
 app.get("/matchExcaper", async (req, res) => {
-    const match = await getMatchDataExcaper(req.query.id);
-    res.json({ match });
+    try {
+        const matchData = await getAllMatchesExcaper(req.query.id);
+        res.json(matchData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            error: "Произошла ошибка при получении данных матча",
+        });
+    }
 });
-// app.get('/matches', async (req, res) => {
-//   const matches = await getMatchesSoccer365()
-//   res.json({ matches })
-// });
-
 // получение матчей
 app.get("/matchesLive", async (req, res) => {
     const matchesLive = await liveSoccer365(req.query.id);
