@@ -58,7 +58,7 @@ app.get("/matchesExcaperAll", async (req, res) => {
 });
 app.get("/matchExcaper", async (req, res) => {
     try {
-        const matchData = await getAllMatchesExcaper(req.query.id);
+        const matchData = await getMatchDataExcaper(req.query.id);
         res.json(matchData);
     } catch (error) {
         console.error(error);
