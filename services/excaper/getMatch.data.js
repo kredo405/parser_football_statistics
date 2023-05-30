@@ -47,23 +47,35 @@ export const getMatchDataExcaper = async (link) => {
             elem.querySelectorAll("tbody").forEach((item) => {
                 item.querySelectorAll("tr").forEach((i) => {
                     items.push({
-                        type: i.querySelectorAll("td")[0].textContent.trim(),
-                        date: i.querySelectorAll("td")[1].textContent.trim(),
                         market: i.querySelectorAll("td")[2].textContent.trim(),
-                        sum: i.querySelectorAll("td")[3].textContent.trim(),
-                        change: i.querySelectorAll("td")[4].textContent.trim(),
-                        time: i.querySelectorAll("td")[5].textContent.trim(),
-                        score: i.querySelectorAll("td")[6].textContent.trim(),
-                        odd: i.querySelectorAll("td")[7].textContent.trim(),
-                        percentChange: i
-                            .querySelectorAll("td")[8]
-                            .textContent.trim(),
-                        totalSum: i
-                            .querySelectorAll("td")[9]
-                            .textContent.trim(),
-                        percentOfMarket: i
-                            .querySelectorAll("td")[10]
-                            .textContent.trim(),
+                        values: {
+                            type: i
+                                .querySelectorAll("td")[0]
+                                .textContent.trim(),
+                            date: i
+                                .querySelectorAll("td")[1]
+                                .textContent.trim(),
+                            sum: i.querySelectorAll("td")[3].textContent.trim(),
+                            change: i
+                                .querySelectorAll("td")[4]
+                                .textContent.trim(),
+                            time: i
+                                .querySelectorAll("td")[5]
+                                .textContent.trim(),
+                            score: i
+                                .querySelectorAll("td")[6]
+                                .textContent.trim(),
+                            odd: i.querySelectorAll("td")[7].textContent.trim(),
+                            percentChange: i
+                                .querySelectorAll("td")[8]
+                                .textContent.trim(),
+                            totalSum: i
+                                .querySelectorAll("td")[9]
+                                .textContent.trim(),
+                            percentOfMarket: i
+                                .querySelectorAll("td")[10]
+                                .textContent.trim(),
+                        },
                     });
                 });
             });
