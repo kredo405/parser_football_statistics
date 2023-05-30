@@ -38,6 +38,8 @@ import { getMatchDataExcaper } from "./services/excaper/getMatch.data.js";
 
 const app = express();
 
+const TIMEOUT_MS = 20000;
+
 app.use(cors());
 
 // Sample api routes for testing
@@ -206,6 +208,10 @@ app.get("/euroFootballPredict", async (req, res) => {
 app.get("/stavkiprognozyPredict", async (req, res) => {
     const predicitons = await stavkiprognozyPredict(req.query.link);
     res.json({ predicitons });
+});
+
+app.use((req, res, next) => {
+    res.status(504).send("Таймаут сервера");
 });
 
 // Port Number
