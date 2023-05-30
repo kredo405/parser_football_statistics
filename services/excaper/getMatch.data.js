@@ -19,7 +19,7 @@ export const getMatchDataExcaper = async (link) => {
 
     const options = {
         method: "GET",
-        url: `https://www.excapper.com/?action=game&id=32383104`,
+        url: link,
         headers: {
             "User-Agent": desktop_agents[rand],
         },
