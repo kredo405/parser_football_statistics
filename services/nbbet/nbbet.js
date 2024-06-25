@@ -16,10 +16,12 @@ export const getMatchesNbBetPrematch = async (timestamp) => {
 
     const options = {
         method: 'GET',
-        url: `https://app.nb-bet.com/v1/page-soccer-results/${timestamp}?timestamp=${timestamp}`,
+        url: `https://app.nb-bet.com/v1/soccer/results/${timestamp}?timestamp=${timestamp}`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
+
+        
     };
     try {
         const response = await axios.request(options);
