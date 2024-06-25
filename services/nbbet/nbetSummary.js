@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getMatchNbBetPrematch = async (link) => {
+export const getSummary = async (link) => {
     const desktop_agents = [
         "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36",
@@ -18,8 +18,7 @@ export const getMatchNbBetPrematch = async (link) => {
 
     const options = {
         method: "GET",
-        url: `https://app.nb-bet.com/v1/soccer/events/page/${link}/50/12/false/false/false/false/true/false`,
-        // https://app.nb-bet.com/v1/soccer/events/page/1160281-daniya-serbiya-prognoz-na-match/50/12/false/false/false/false/true/false
+        url: `https://app.nb-bet.com/v1/soccer/events/summary/${link}/50/12/false/false/false/false/true`,
         headers: {
             "User-Agent": desktop_agents[rand],
         },
