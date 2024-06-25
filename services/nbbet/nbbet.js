@@ -16,7 +16,7 @@ export const getMatchesNbBetPrematch = async (timestamp) => {
 
     const options = {
         method: 'GET',
-        url: `https://app.nb-bet.com/v1/soccer/results/${timestamp}?timestamp=${timestamp}`,
+        url: `https://app.nb-bet.com/v1/soccer/results/page?timestamp=${timestamp}`,
         headers: {
             'User-Agent': desktop_agents[rand],
         }
