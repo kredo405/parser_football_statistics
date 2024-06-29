@@ -5,7 +5,7 @@ import { getMatchesNbBetPrematch } from "./services/nbbet/nbbet.js";
 import { getMatchNbBetPrematch } from "./services/nbbet/nbbetMatch.js";
 import { getMatchesNbBetPredict } from "./services/nbbet/nbbetPredict.js";
 import { getSummary } from "./services/nbbet/nbetSummary.js";
-
+import { getHisoryOdds } from "./services/nbbet/nbBetOdds.js";
 
 const app = express();
 
@@ -33,6 +33,10 @@ app.get("/nbbetPredict", async (req, res) => {
 });
 app.get("/nbbetSummary", async (req, res) => {
     const match = await getSummary(req.query.link);
+    res.json({ match });
+});
+app.get("/historyOdds", async (req, res) => {
+    const match = await getHisoryOdds(req.query.link);
     res.json({ match });
 });
 
