@@ -18,7 +18,7 @@ export const getMatchesNbBetPredict = async (link) => {
 
     const options = {
         method: "GET",
-        url: `https://app.nb-bet.com/v1/soccer/events/tips/${link}/1`,
+        url: `https://app.nb-bet.com/v1/soccer/events/tips/${link}`,
         headers: {
             "User-Agent": desktop_agents[rand],
         },
