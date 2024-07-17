@@ -4,6 +4,7 @@ import { getMatchNbBetPrematch } from "../controllers/nbbet/nbbetMatch.js";
 import { getMatchesNbBetPredict } from "../controllers/nbbet/nbbetPredict.js";
 import { getSummary } from "../controllers/nbbet/nbetSummary.js";
 import { getHisoryOdds } from "../controllers/nbbet/nbBetOdds.js";
+import { getLastMatchesNbBet } from "../controllers/nbbet/nbBetLastMatches.js";
 
 const nbBetRouter = Router();
 
@@ -13,6 +14,10 @@ nbBetRouter.get("/nbbetMatches", async (req, res) => {
 });
 nbBetRouter.get("/nbbetMatch", async (req, res) => {
   const match = await getMatchNbBetPrematch(req.query.link);
+  res.json({ match });
+});
+nbBetRouter.get("/nbbetLastMatches", async (req, res) => {
+  const match = await getLastMatchesNbBet(req.query.link);
   res.json({ match });
 });
 nbBetRouter.get("/nbbetPredict", async (req, res) => {
