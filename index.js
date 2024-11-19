@@ -9,7 +9,6 @@ import stavkaTvRouter from "./routes/stavkaTV.js";
 import dotenv from "dotenv";
 
 const app = express();
-dotenv.config();
 
 app.use(cors());
 
@@ -35,9 +34,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/nbBet", nbBetRouter);
-app.use("/excaper", excaperRouter);
-app.use("/arbworld", arbworldRouter);
-app.use("/xgScore", xgScoreRouter);
+// app.use("/excaper", excaperRouter);
+// app.use("/arbworld", arbworldRouter);
+// app.use("/xgScore", xgScoreRouter);
 app.use("/stavkatv", stavkaTvRouter);
 // Port Number
 const port = 8000;
