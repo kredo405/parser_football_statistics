@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: express-app
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017/mydatabase
+    command: sh -c "npm install && npm run dev"
+
+  mongo:
+    container_name: mongodb
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: kredo
+      MONGO_INITDB_ROOT_PASSWORD: kredo
+
+volumes:
+  mongo_data:
+    driver: local
