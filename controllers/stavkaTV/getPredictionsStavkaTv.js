@@ -22,11 +22,6 @@ export const getPredictionsStavkaTv = async (link, limit) => {
     headers: {
       "User-Agent": desktop_agents[rand],
     },
-    proxy: {
-      protocol: "http",
-      host: "149.129.239.170",
-      port: 8080,
-    },
   };
   try {
     const response = await axios.request(options);
