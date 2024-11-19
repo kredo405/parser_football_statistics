@@ -22,6 +22,11 @@ export const getMatchesStavkaTv = async (limit, dateFrom, dateTo) => {
     headers: {
       "User-Agent": desktop_agents[rand],
     },
+    proxy: {
+      protokol: "http",
+      host: "185.221.152.148",
+      port: "3128",
+    },
   };
   try {
     const response = await axios.request(options);
